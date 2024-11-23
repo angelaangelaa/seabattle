@@ -23,5 +23,11 @@ for size in ship_sizes:
         else:
             row, col = random.randint(0, BOARD_SIZE - size), random.randint(0, BOARD_SIZE - 1)
             ship = [(row + i, col) for i in range(size)]
-
+        if all(0 <= r < BOARD_SIZE and 0 <= c < BOARD_SIZE and board[r][c] == EMPTY for r, c in ship) and \
+            all(board[r + dr][c + dc] == EMPTY for r, c in ship for dr, dc in [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)] 
+                if 0 <= r + dr < BOARD_SIZE and 0 <= c + dc < BOARD_SIZE):
+            for r, c in ship:  # Если проверка пройдена, размещаем корабль
+                board[r][c] = "S"
+            ships.append(ship)  # Добавляем корабль в список
+            break
         
