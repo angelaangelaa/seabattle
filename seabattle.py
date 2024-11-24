@@ -35,3 +35,9 @@ player_name = input("Please, enter your name: ")
 
 shots = 0
 sunk_ships = 0
+
+while sunk_ships < len(ships):
+    os.system('cls' if os.name == 'nt' else 'clear')  
+    print("   " + " ".join("abcdefg"[:board_size]))
+    for i, row in enumerate(player_board):
+        print(f"{i + 1:2} " + " ".join(row))
