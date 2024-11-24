@@ -52,3 +52,19 @@ while sunk_ships < len(ships):
     if player_board[row][col] != empty:
         print("you already shot here!")
         continue
+
+    shots += 1
+        if board[row][col] == "s":
+            player_board[row][col] = hit
+            for ship in ships:
+                if all(player_board[r][c] == hit for r, c in ship):
+                    for r, c in ship:
+                        player_board[r][c] = sunk
+                    sunk_ships += 1
+                    print("ship sunk!")
+                    break
+            else:
+                print("hit!")
+        else:
+            player_board[row][col] = miss
+            print("miss!")
