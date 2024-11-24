@@ -26,8 +26,12 @@ for size in ship_sizes:
         if all(0 <= r < BOARD_SIZE and 0 <= c < BOARD_SIZE and board[r][c] == EMPTY for r, c in ship) and \
             all(board[r + dr][c + dc] == EMPTY for r, c in ship for dr, dc in [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)] 
                 if 0 <= r + dr < BOARD_SIZE and 0 <= c + dc < BOARD_SIZE):
-            for r, c in ship:  # Если проверка пройдена, размещаем корабль
+            for r, c in ship:  
                 board[r][c] = "S"
-            ships.append(ship)  # Добавляем корабль в список
+            ships.append(ship)  
             break
-        
+
+player_name = input("Please, enter your name: ")
+
+shots = 0
+sunk_ships = 0
