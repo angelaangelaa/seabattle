@@ -68,3 +68,6 @@ while sunk_ships < len(ships):
         else:
             player_board[row][col] = miss
             print("miss!")
+
+os.system('cls' if os.name == 'nt' else 'clear')
+print(f"congratulations, {player_name}! you won in {shots} shots.")
