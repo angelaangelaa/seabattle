@@ -38,7 +38,7 @@ sunk_ships = 0
 
 while sunk_ships < len(ships):
     os.system('cls' if os.name == 'nt' else 'clear')  
-    print("   " + " ".join("abcdefg"[:board_size]))
+    print("  " + " ".join("abcdefg"[:board_size]))
     for i, row in enumerate(player_board):
         print(f"{i + 1} " + " ".join(row))
         
@@ -46,12 +46,11 @@ while sunk_ships < len(ships):
         shot = input("Your shot (e.g., b5): ").lower()
         if len(shot) == 2 and "a" <= shot[0] <= "g" and "1" <= shot[1] <= str(board_size):
             row, col = int(shot[1]) - 1, ord(shot[0]) - 97
+            if player_board[row][col] != empty:
+                print("You already shot here!")
+                continue
             break
         print("invalid input!")
-
-    if player_board[row][col] != empty:
-        print("You already shot here!")
-        continue
 
     shots += 1
     if board[row][col] == "s":
