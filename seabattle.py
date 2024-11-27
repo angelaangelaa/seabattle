@@ -54,21 +54,22 @@ while sunk_ships < len(ships):
         continue
 
     shots += 1
-    
-        if board[row][col] == "s":
-            player_board[row][col] = hit
-            for ship in ships:
-                if all(player_board[r][c] == hit for r, c in ship):
-                    for r, c in ship:
-                        player_board[r][c] = sunk
-                    sunk_ships += 1
-                    print("Ship sunk!")
-                    break
+    if board[row][col] == "s":
+        player_board[row][col] = hit
+        for ship in ships:
+            if (row, col) in ship:
+                ship_hits == len(ship):
+                for r, c in ship:
+                    player_board[r][c] = sunk
+                sunk_ships += 1
+                print("Ship sunk!")
+                break
             else:
                 print("Hit!")
-        else:
-            player_board[row][col] = miss
-            print("Miss!")
+            break
+    else:
+        player_board[row][col] = miss
+        print("Miss!")
 
 os.system('cls' if os.name == 'nt' else 'clear')
 print(f"Congratulations, {player_name}! You won in {shots} shots.")
