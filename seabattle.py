@@ -57,7 +57,7 @@ while sunk_ships < len(ships):
         player_board[row][col] = hit
         for ship in ships:
             if (row, col) in ship:
-                ship_hits == len(ship):
+                ship_hits == len(ship)
                 for r, c in ship:
                     player_board[r][c] = sunk
                 sunk_ships += 1
