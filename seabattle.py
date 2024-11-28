@@ -8,8 +8,9 @@ empty = "~"
 miss = "O"   
 hit = "X"   
 sunk = "#"  
+leaderboard = []
 
-def game()
+def game():
 
     board = [[empty] * board_size for _ in range(board_size)]
     player_board = [[empty] * board_size for _ in range(board_size)]
@@ -53,7 +54,7 @@ def game()
                     print("You already shot here!")
                     continue
                 break
-            print("invalid input!")
+            print("Invalid input!")
     
         shots += 1
         if board[row][col] == "S":
@@ -72,11 +73,9 @@ def game()
             print("Miss!")
         time.sleep(1)    
 
-os.system('cls' if os.name == 'nt' else 'clear')
-print(f"Congratulations, {player_name}! You won in {shots} shots.")
-os.system('cls' if os.name == 'nt' else 'clear')
-print(f"Congratulations, {player_name}! You won in {shots} shots.")
-return player_name, shots
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(f"Congratulations, {player_name}! You won in {shots} shots.")
+    return player_name, shots
 
 while True:
     player_name, shots = game()
@@ -87,7 +86,7 @@ while True:
     play_again = input("Do you want to play again? (yes/no): ").lower()
     if play_again != "yes":
         os.system('cls' if os.name == 'nt' else 'clear')
-        print("Leaderboard (sorted by best performance):")
+        print("Leaderboard (best performances:")
         for rank, (name, score) in enumerate(leaderboard, 1):
             print(f"{rank}. {name}: {score} shots")
         break
